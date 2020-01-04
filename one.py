@@ -1,4 +1,4 @@
-""" @package one.py
+"""@package one.py
  Trying to document one.py
 """
 
