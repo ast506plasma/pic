@@ -11,7 +11,7 @@ def test_shape_basic():
 	assert s._size == 1
 
 def test_shape_set_shape():
-	s = Shape1DTriangle(3)
+	s = Shape1DTriangle(4)
 	s.set_shape(2)
 	assert s._size == 2
 	
