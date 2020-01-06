@@ -12,9 +12,9 @@ class Grid1DCartesian(Grid1D):
 	_type = "Cartesian"
 
 	def set_grid(self):
-                """
-                Set the grid after it is initialized
-                """
+		"""
+		Set the grid after it is initialized
+		"""
 		dx=self._grid_step.item(_Ndims-1)
 		"""
 		grid step size
@@ -27,14 +27,14 @@ class Grid1DCartesian(Grid1D):
 		self._grid_shifted = np.linspace(dx/2.0,dx*Nx-dx/2.0,Nx-1)                
 
 	def set_grid_container(self,grid_container):
-                """
-                Setting values of grid container (i.e. fields or sources)
-                """
+		"""
+		Setting values of grid container (i.e. fields or sources)
+		"""
 		self._grid_container=grid_container
 
 	def get_grid_container(self):
-                """
-                Accessing values of grid container (i.e. fields or sources)
-                """
+		"""
+		Accessing values of grid container (i.e. fields or sources)
+		"""
 		return self._grid_container
 
