@@ -15,11 +15,11 @@ class Grid1DCartesian(Grid1D):
                 """
                 Set the grid after it is initialized
                 """
-		dx=self._grid_step.item(_Ndims-1)
+	        dx=self._grid_step.item(_Ndims-1)
 		"""
 		grid step size
 		"""
-		Nx=self._grid_size.item(_Ndims-1)
+                Nx=self._grid_size.item(_Ndims-1)
 		"""
 		number of grid nodes
 		"""
