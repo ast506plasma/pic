@@ -12,8 +12,8 @@ class Grid:
 		"""
 		The constructor
 		"""
-                self._grid_step = grid_step
-                self._grid_size = grid_size
+        	self._grid_step = grid_step
+        	self._grid_size = grid_size
 
 	def set_grid(self, grid_step, grid_size):
 		"""
