@@ -22,4 +22,4 @@ def test_particle_basic():
 	assert are_floats_equal(p.get_charge(), charge)
 	assert p.position.all() == position.all()
 	assert p.momentum.all() == momentum.all()
-	assert p.shape() = shape
+	assert p.get_shape() == shape
