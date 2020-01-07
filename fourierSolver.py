@@ -7,7 +7,7 @@ import numpy as np
 
 """ Fourier method for solving the field given rho and grid.
 """
-class fourier_solver(FieldSolver):
+class fourierSolver(FieldSolver):
     def __init__(self):
         self._type = "Fourier"
 
