@@ -3,7 +3,7 @@ Documentation for Particle class
 """
 
 import numpy as np
-from Shape1DTriangle import *
+from Shape import *
 
 class Particle:
 	"""
