@@ -2,7 +2,7 @@
 Field class
 """
 
-from fourier_solver import fourier_solver
+from fourierSolver import fourierSolver
 
 """ Calculate the field given a charge density.
 

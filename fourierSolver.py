@@ -13,7 +13,7 @@ class fourierSolver(FieldSolver):
 
     def __call__(self, rho, grid, shift):
         nx = len(rho)
-        dx = grid.size # Figure out how this implemented by Grid class
+        dx = grid.cell_size # Figure out how this implemented by Grid class
         lx = dx * float(nx)
 
         Frho = np.fft.fft(rho)
