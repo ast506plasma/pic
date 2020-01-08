@@ -34,14 +34,14 @@ class Grid:
 		"""
 		return self._grid_shifted
 	
-	def set_grid_container(self, grid, is_shifted, grid_container):
+	def set_grid_container(self, grid_container):
 		"""
 		Setting values of grid container (i.e. fields or sources)
 		"""
-		pass
+		self._grid_container=grid_container
 
 	def get_grid_container(self):
 		"""
 		Accessing values of grid container (i.e. fields or sources)
 		"""
-		pass
+		return self._grid_container
