@@ -12,6 +12,9 @@ class fourierSolver(FieldSolver):
         self._type = "Fourier"
 
     def __call__(self, rho, grid, shift):
+        """Return the field along an axis given
+        the charge density, grid, and shift.
+        """
         nx = len(rho)
         dx = grid.cell_size # Figure out how this implemented by Grid class
         lx = dx * float(nx)
