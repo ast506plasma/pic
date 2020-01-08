@@ -10,4 +10,3 @@ class Grid1D(Grid):
 	Documentation for Grid1D class
 	"""
 	_Ndims = 1
-
