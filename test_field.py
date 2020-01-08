@@ -1,8 +1,7 @@
 from Field import Field
 import numpy as np
-import matplotlib.pyplot as plt
 
-def field_solver_test():
+def field_solver_test(plot = False):
     # Fake Grid class for simple initialization
     class Grid:
         def __init__(self, x):
@@ -15,5 +14,8 @@ def field_solver_test():
     field = Field("Fourier", 3, grid)
 
     field.solve(rho, 0.0)
-    # plt.plot(x, rho)
-    plt.plot(x, field.ex)
+    
+    if plot:
+        import matplotlib.pyplot as plt
+        plt.plot(x, rho)
+        plt.plot(x, field.ex)
