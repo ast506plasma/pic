@@ -16,12 +16,6 @@ def \hyperlink{classGrid1DCartesian_1_1Grid1DCartesian_ab65433172dcaf48d7e5b70bf
 \item 
 def \hyperlink{classGrid1DCartesian_1_1Grid1DCartesian_a54f1f22b80717d8f6a809a6a9f3c649b}{get\-\_\-grid\-\_\-container}
 \end{DoxyCompactItemize}
-\subsection*{Static Public Attributes}
-\begin{DoxyCompactItemize}
-\item 
-\hypertarget{classGrid1DCartesian_1_1Grid1DCartesian_a9102b7faba7f5dc99f952e870d5149ea}{tuple {\bfseries Nx} = self.\-\_\-grid\-\_\-size.\-item(\-\_\-\-Ndims-\/1)}\label{classGrid1DCartesian_1_1Grid1DCartesian_a9102b7faba7f5dc99f952e870d5149ea}
-
-\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -46,7 +40,11 @@ def \hyperlink{classGrid1DCartesian_1_1Grid1DCartesian_a54f1f22b80717d8f6a809a6a
 \item[{}]{self}
 \end{DoxyParamCaption}
 )}}\label{classGrid1DCartesian_1_1Grid1DCartesian_a7aa69514393f49e62b5b6e52474bba66}
-\begin{DoxyVerb}Set the grid after it is initialized
+\begin{DoxyVerb}Method sets the grid after it is initialized
+dx is the grid step size; Nx is the number of grid nodes
+We assume that the domain is from Lbeg=0 to Lend=dx*(Nx-1),
+usual grid - same boundaries with Nx nodes,
+shifted grid - from dx/2 to Lend - dx/2 with Nx-1 nodes
 \end{DoxyVerb}
  \hypertarget{classGrid1DCartesian_1_1Grid1DCartesian_ab65433172dcaf48d7e5b70bf8efe0c6f}{\index{Grid1\-D\-Cartesian\-::\-Grid1\-D\-Cartesian@{Grid1\-D\-Cartesian\-::\-Grid1\-D\-Cartesian}!set\-\_\-grid\-\_\-container@{set\-\_\-grid\-\_\-container}}
 \index{set\-\_\-grid\-\_\-container@{set\-\_\-grid\-\_\-container}!Grid1DCartesian::Grid1DCartesian@{Grid1\-D\-Cartesian\-::\-Grid1\-D\-Cartesian}}

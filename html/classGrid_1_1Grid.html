@@ -108,8 +108,16 @@ Inheritance diagram for Grid.Grid:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:acbb39beb7e85435989317b14ac7000a6"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGrid_1_1Grid.html#acbb39beb7e85435989317b14ac7000a6">__init__</a></td></tr>
 <tr class="separator:acbb39beb7e85435989317b14ac7000a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13472fee60bf774164952c7536fcbf78"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGrid_1_1Grid.html#a13472fee60bf774164952c7536fcbf78">set_grid</a></td></tr>
+<tr class="separator:a13472fee60bf774164952c7536fcbf78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36d045afd1df02a5042c3067b200e11a"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGrid_1_1Grid.html#a36d045afd1df02a5042c3067b200e11a">get_grid</a></td></tr>
+<tr class="separator:a36d045afd1df02a5042c3067b200e11a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae91a6887196a4c294aec24ee5a459ad4"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGrid_1_1Grid.html#ae91a6887196a4c294aec24ee5a459ad4">get_grid_shifted</a></td></tr>
+<tr class="separator:ae91a6887196a4c294aec24ee5a459ad4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aede8950228046ba7d946279b5dcb62d6"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGrid_1_1Grid.html#aede8950228046ba7d946279b5dcb62d6">set_grid_container</a></td></tr>
 <tr class="separator:aede8950228046ba7d946279b5dcb62d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afbc0b152099899bf629021c9a01e5d16"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGrid_1_1Grid.html#afbc0b152099899bf629021c9a01e5d16">get_grid_container</a></td></tr>
+<tr class="separator:afbc0b152099899bf629021c9a01e5d16"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><pre class="fragment">Documentation for Grid class.
@@ -143,11 +151,80 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">The constructor
+<pre class="fragment">The constructor which delivers data of grid steps and number of nodes
+in the specific direction
 </pre> 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a36d045afd1df02a5042c3067b200e11a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def Grid.Grid.get_grid </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Returns the grid
+</pre> 
+</div>
+</div>
+<a class="anchor" id="afbc0b152099899bf629021c9a01e5d16"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def Grid.Grid.get_grid_container </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Accessing values of grid container (i.e. fields or sources)
+</pre> 
+</div>
+</div>
+<a class="anchor" id="ae91a6887196a4c294aec24ee5a459ad4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def Grid.Grid.get_grid_shifted </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Returns the shifted grid
+</pre> 
+</div>
+</div>
+<a class="anchor" id="a13472fee60bf774164952c7536fcbf78"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def Grid.Grid.set_grid </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Set the grid after it is initialized
+</pre> 
+</div>
+</div>
 <a class="anchor" id="aede8950228046ba7d946279b5dcb62d6"></a>
 <div class="memitem">
 <div class="memproto">
@@ -157,12 +234,6 @@ Public Member Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>grid</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
