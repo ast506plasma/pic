@@ -3,7 +3,7 @@ Documentation for Interpolator1DNearest class
 """
 
 from Interpolator1D import *
-# from scipy import interpolate
+from scipy import interpolate
 import numpy as np
 
 class Interpolator1DNearest(Interpolator1D):
@@ -25,15 +25,5 @@ class Interpolator1DNearest(Interpolator1D):
 		elif position >= grid[-1]:
 			return grid_field[-1]
 
-		# finds the nearest grid point
-		distance = np.abs(position - grid)
-		min_distance = np.amin(distance)
-		min_index = np.where(distance == min_distance)
-
-		return grid_field[min_index[0][0]]
-		
-		# If scipy is installed on travis machine, comment above and uncomment
-		# below.
-		#p = interpolate.interp1d(field.get_grid_shifted(),\
-		#					    field.get_grid_container(), kind = "nearest")
-		#return p(position)
+		p = interpolate.interp1d(grid, grid_field, kind = "nearest")
+		return p(position)
