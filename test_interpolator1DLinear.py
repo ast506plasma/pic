@@ -1,6 +1,5 @@
 from unittest.mock import Mock
 from unittest.mock import MagicMock
-from Grid1DCartesian import *
 from Interpolator1DLinear import *
 import numpy as np
 
