@@ -3,6 +3,9 @@ Documentation for Interpolator class (ABC)
 """
 
 class Interpolator:
+	"""
+	Abstract base class for any interpolator
+	"""
 	def __init__(self):
 		"""
 		The constructor
