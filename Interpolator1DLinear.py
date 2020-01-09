@@ -3,7 +3,6 @@ Documentation for Interpolator1DLinear class
 """
 
 from Interpolator1D import *
-# from scipy import interpolate
 import numpy as np
 
 class Interpolator1DLinear(Interpolator1D):
@@ -47,9 +46,3 @@ class Interpolator1DLinear(Interpolator1D):
 
 		return (dx - min_distance) * nearest_field + \
 			   (dx - second_min_distance) * second_nearest_field
-		
-		# If scipy is installed on travis machine, comment above and uncomment
-		# below.
-		#p = interpolate.interp1d(field.get_grid_shifted(),\
-		#					    field.get_grid_container(), kind = "linear")
-		#return p(position)
