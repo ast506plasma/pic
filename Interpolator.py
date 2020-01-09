@@ -3,17 +3,10 @@ Documentation for Interpolator class (ABC)
 """
 
 class Interpolator:
-	def __init__(self, type1):
+	def __init__(self):
 		"""
 		The constructor
 		"""
-		set_interpolator(self, type1)
-
-	def set_interpolator(self, type1)
-		"""
-		Set the type of interpolator after initialization
-		"""
-		self._type = type1
 
 	def __call__(self, position, field):
 		"""
