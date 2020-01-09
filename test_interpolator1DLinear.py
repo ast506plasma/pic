@@ -3,6 +3,8 @@ from unittest.mock import MagicMock
 from Interpolator1DLinear import *
 import numpy as np
 
+PRECISION = 1e-7
+
 # Create a grid with container's values are 2 times x values
 # i.e. x = np.array([0.5, 1.5, 2.5, 3.5, 4.5])
 #      y = np.array([1.0, 3.0, 5.0, 7.0, 9.0])
@@ -20,7 +22,13 @@ def test_interpolator_basic():
 	
 	pos = np.arange(1, 5, 1)
 	# interpolated field for all position
-	field_i = interpolator(pos, field)
+	field_i = []
+	for i in pos:
+		field_i.append(interpolator(i, field))
 
 	for i in range(len(pos)):
-		assert field_i[i] == 2 * pos[i]
+		assert np.abs(field_i[i] - 2 * pos[i]) < PRECISION
+
+	# test for position is outside shifted-grid but stil inside grid
+	assert np.abs(interpolator(0.1, field) - 1.0) < PRECISION
+	assert np.abs(interpolator(4.8, field) - 9.0) < PRECISION
