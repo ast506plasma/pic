@@ -3,7 +3,6 @@ Documentation for Interpolator1DLinear class
 """
 
 from Interpolator1D import *
-from Grid import *
 from scipy import interpolate
 import numpy as np
 
