@@ -20,14 +20,11 @@ def test_interpolator_basic():
 	field.get_grid_shifted = MagicMock(return_value = x)
 	field.get_grid_container = MagicMock(return_value = y)
 	
-	pos = np.arange(1, 5, 1)
-	# interpolated field for all position
-	field_i = []
-	for i in pos:
-		field_i.append(interpolator(i, field))
-
-	for i in range(len(pos)):
-		assert np.abs(field_i[i] - 2 * pos[i]) < PRECISION
+	# test basic cases
+	assert np.abs(interpolator(1.5, field) - 3.0) < PRECISION
+	assert np.abs(interpolator(2.5, field) - 5.0) < PRECISION
+	assert np.abs(interpolator(2.8, field) - 5.6) < PRECISION
+	assert np.abs(interpolator(3.0, field) - 6.0) < PRECISION
 
 	# test for position is outside shifted-grid but stil inside grid
 	assert np.abs(interpolator(0.1, field) - 1.0) < PRECISION
