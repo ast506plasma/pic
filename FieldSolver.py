@@ -8,5 +8,5 @@ class FieldSolver:
     def __init__(self):
         self._type = "None"
 
-    def __call__(self, rho, grid, shift):
+    def __call__(self, rho, grid):
         pass
