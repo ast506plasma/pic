@@ -11,7 +11,7 @@ class Interpolator:
 		The constructor
 		"""
 
-	def __call__(self, position, field):
+	def __call__(self, position, field, grid):
 		"""
 		Return interpolated value of the field at the specified position
 		"""
