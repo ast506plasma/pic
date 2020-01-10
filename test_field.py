@@ -1,7 +1,6 @@
 from Field import Field
 from Grid1DCartesian import Grid1DCartesian
 import numpy as np
-import pdb
 
 PRECISION = 1e-5
 GRID_SIZE = 100
@@ -23,11 +22,11 @@ def test_field_solver_Grid1DCartesian(plot = False):
 
     grid.set_grid()
     x = grid.get_grid()
-    pdb.set_trace()
     rho = 0.1*np.sin(x)
 
     field = Field("Fourier", "linear", grid)
 
+    # Check that the grid was built correctly
     assert x[0] == 0.0
     assert np.abs(x[-1] - (STEP_SIZE * (GRID_SIZE - 1))) < PRECISION
 
