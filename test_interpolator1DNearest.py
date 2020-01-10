@@ -17,19 +17,19 @@ def test_interpolator_basic():
 	x = np.array([0.5, 1.5, 2.5, 3.5, 4.5])
 	y = 2 * x
 	field = Mock()
-	field.get_grid_shifted = MagicMock(return_value = x)
-	field.get_grid_container = MagicMock(return_value = y)
-	
+	grid = x #MagicMock(return_value = x)
+	field = y #MagicMock(return_value = y)
+
 	# test basic cases
-	assert np.abs(interpolator(1.5, field) - 3.0) < PRECISION
-	assert np.abs(interpolator(1.9, field) - 3.0) < PRECISION
-	assert np.abs(interpolator(2.2, field) - 5.0) < PRECISION
+	assert np.abs(interpolator(1.5, field, grid) - 3.0) < PRECISION
+	assert np.abs(interpolator(1.9, field, grid) - 3.0) < PRECISION
+	assert np.abs(interpolator(2.2, field, grid) - 5.0) < PRECISION
 
 	# test a boundary case
 	# for boundary case the interpolator returns the value at the lower
 	# grid point
-	assert np.abs(interpolator(2.0, field) - 3.0) < PRECISION
+	assert np.abs(interpolator(2.0, field, grid) - 3.0) < PRECISION
 
 	# test for position is outside shifted-grid but stil inside grid
-	assert np.abs(interpolator(0.1, field) - 1.0) < PRECISION
-	assert np.abs(interpolator(4.8, field) - 9.0) < PRECISION
+	assert np.abs(interpolator(0.1, field, grid) - 1.0) < PRECISION
+	assert np.abs(interpolator(4.8, field, grid) - 9.0) < PRECISION

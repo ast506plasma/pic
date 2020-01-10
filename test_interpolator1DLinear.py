@@ -17,8 +17,8 @@ def test_interpolator_basic():
 	x = np.array([0.5, 1.5, 2.5, 3.5, 4.5])
 	y = 2 * x
 	# field = Mock()
-	field = x #MagicMock(return_value = x)
-	grid = y #MagicMock(return_value = y)
+	grid = x #MagicMock(return_value = x)
+	field = y #MagicMock(return_value = y)
 
 	# test basic cases
 	assert np.abs(interpolator(1.5, field, grid) - 3.0) < PRECISION
