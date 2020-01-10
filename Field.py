@@ -3,6 +3,8 @@ Field class
 """
 
 from fourierSolver import fourierSolver
+from Interpolator1DLinear import Interpolator1DLinear
+from Interpolator1DNearest import Interpolator1DNearest
 
 """ Calculate the field given a charge density.
 
@@ -10,11 +12,11 @@ Calculate the electrostatic field at a position on the grid
 using an interpolation method.
 """
 class Field:
-    def __init__(self, FieldSolver_type, interpolation_type, grid):
+    def __init__(self, FieldSolver_type, interp_type, grid):
         self.grid = grid
-        self.Ndims = self.grid.get_Ndims
+        self.Ndims = self.grid.get_Ndims()
         self._FieldSolver = self._initialize_solver(FieldSolver_type)
-        self._interpolator = self._initialize_interp(interpolation_type)
+        self._interpolator = self._initialize_interp(interp_type)
         self.ex = None
 
     def _initialize_solver(self, FieldSolver_type):
@@ -25,7 +27,7 @@ class Field:
         else:
             raise ValueError("%s is not a field solver type"%FieldSolver_type)
 
-    def _initialize_interp(self, interpolation_type):
+    def _initialize_interp(self, interp_type):
         """Return the Interpolator given its type.
         """
         if self.Ndims == 1:
@@ -44,11 +46,11 @@ class Field:
         else:
             return interp
 
-    def solve(self, rho, shift):
+    def solve(self, rho):
         """Solve the field using the field solver
         given a charge density (rho).
         """
-        self.ex = self._FieldSolver(rho, self.grid, shift)
+        self.ex = self._FieldSolver(rho, self.grid)
 
         return
 
