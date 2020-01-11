@@ -55,6 +55,8 @@ class Field:
         return
 
     def interpolate(self, position):
+        """Interpolate field values at given positions.
+        """
         if self.ex is None:
             raise RuntimeError("The field hasn't been solved yet.")
         else:
