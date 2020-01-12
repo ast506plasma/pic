@@ -1,6 +1,8 @@
 """@package Velocity Fixer
 """
 
+import numpy as np
+
 class VelocityFixer:
     def __init__(self):
         """
@@ -11,14 +13,14 @@ class VelocityFixer:
     def __call__(self, collection, field):
         pass
 
-class VelocityFixer1D(VelocityFixer):
+class VelocityFixer1DLeapFrog(VelocityFixer):
     """Accelerate the mobile particles in a collection.
     """
     def __init__(self):
-        self.type = "1D"
+        self.type = "1DLeapFrog"
 
     def __call__(self, collection, field):
-        firsttype = collection[0].type
+        firsttype = collection.particles[0].type
         if firsttype == "immobile":
             # If particles are immobile, nothing occurs
             return
@@ -29,7 +31,7 @@ class VelocityFixer1D(VelocityFixer):
 
         force_func = lambda gridpos, pos: 1.0-np.abs(gridpos - pos) / grid_step
 
-        for pp in collection:
+        for pp in collection.particles:
             # Make sure all particles are of the same type
             assert(pp.type == firsttype,
                    "Particles in collection are not of the same type")

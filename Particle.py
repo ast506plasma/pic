@@ -27,9 +27,12 @@ class Particle:
 		self._shape = shape
 
 		# Check if mobile. If so, its mass must be 1.0
-		if ((self.type == "mobile") and (self._mass != 1.0)):
-			self._mass = 1.0
-			print("Mass of mobile particle set to unity.")
+		if ((self.type == "mobile") and (self._mass != 1)):
+			self._mass = 1
+			print("Mass of mobile particle set to 1.")
+		if ((self.type == "mobile") and (self._charge != -1)):
+			self._charge = -1
+			print("Charge of mobile particle set to -1.")
 
 	def get_mass(self):
 		"""

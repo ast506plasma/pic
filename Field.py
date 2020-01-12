@@ -70,12 +70,19 @@ class Field:
 
         return self._interpolator(position, self.ex, grid)
 
-    def get_pusher(self, pusher_type):
-        """Obtain the pusher for this field.
+    def get_updaters(self, type):
+        """Obtain the updaters (pusher, velocity fixer) for this field.
         """
-        try:
-            pusher = getattr(Pusher, "Pusher{}".format(pusher_type))
-        except AttributeError:
-            raise ValueError("Unknown pusher type %s"%pusher_type)
+        type = "{0}D{1}".format(self.Ndims, type)
 
-        return pusher()
+        try:
+            pusher = getattr(Pusher, "Pusher{}".format(type))
+        except AttributeError:
+            raise ValueError("Unknown pusher type %s"%type)
+
+        try:
+            velfix = getattr(VelocityFixer, "VelocityFixer{}".format(type))
+        except AttributeError:
+            raise ValueError("Unknown velocity fixer type %s"%type)
+
+        return pusher(), velfix()

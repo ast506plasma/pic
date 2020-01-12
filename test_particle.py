@@ -19,7 +19,7 @@ def test_particle_basic():
 
 	p = Particle(mass, charge, "mobile", position, momentum, shape)
 	assert are_floats_equal(p.get_mass(), 1.0)
-	assert are_floats_equal(p.get_charge(), charge)
+	assert are_floats_equal(p.get_charge(), -1.0)
 	assert p.position.all() == position.all()
 	assert p.momentum.all() == momentum.all()
 	assert p.get_shape() == shape

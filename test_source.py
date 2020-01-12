@@ -24,7 +24,8 @@ def test_source_generator():
 	pc.add_particles(p1)
 	pc.add_particles(p2)
 
-	source = SourceGenerator1DES.get_source(pc,grid)
+	generator = SourceGenerator1DES()
+	source = generator.get_source(pc,grid)
 	assert source.size == 10
 	assert source.item(0) == 0.0
 	assert source.item(1) == 1.0
@@ -37,7 +38,7 @@ def test_source_generator():
 	pc2.add_particles(p1)
 	pc2.add_particles(p2)
 
-	source = SourceGenerator1DES.get_source(pc2,grid)
+	source = generator.get_source(pc2,grid)
 	assert source.size == 10
 	assert source.item(1) == 0.0
 	assert np.abs(source.item(2)+0.8) < PRECISION
@@ -59,6 +60,7 @@ def test_source_generator_adv():
 	pc3.add_particles(p1)
 	pc3.add_particles(p2)
 
-	source = SourceGenerator1DES.get_source(pc3,grid)
+	generator = SourceGenerator1DES()
+	source = generator.get_source(pc3,grid)
 	assert source.size == 10
 	assert np.abs(source.item(2) + 0.1) < PRECISION

@@ -1,6 +1,8 @@
 """@package Pusher
 """
 
+import numpy as np
+
 class Pusher:
     def __init__(self):
         """
@@ -11,21 +13,21 @@ class Pusher:
     def __call__(self, collection, field):
         pass
 
-class Pusher1D(Pusher):
+class Pusher1DLeapFrog(Pusher):
     def __init__(self):
-        self.type = "1D"
+        self.type = "1DLeapFrog"
 
     def __call__(self, collection, field):
         """Push particles in a collection.
         """
-        firsttype = collection[0].type
+        firsttype = collection.particles[0].type
         grid = field.grid.get_grid()
         gridhalf = field.grid.get_grid_shifted()
         grid_step = grid[1] - grid[0]
 
         force_func = lambda gridpos, pos: 1.0-np.abs(gridpos - pos) / grid_step
 
-        for pp in collection:
+        for pp in collection.particles:
             # Make sure all particles are of the same type
             assert(pp.type == firsttype,
                    "Particles in collection are not of the same type")
