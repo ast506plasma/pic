@@ -34,7 +34,7 @@ class SourceGenerator1DES(SourceGenerator1D):
 		w1 = 1.0 #there should be some weight coefficient; before, it was  grid.size/ParticleCollection.particles.size, but now it seems weird
 		s = Shape1DTriangle(dx)
 		for part in ParticleCollection.particles:
-			id_closest=SourceGenerator1DES.get_closest(grid,part.position)
+			id_closest=part.get_closest(grid)
 			charge=part.get_charge()
 			w2 = s.get_height(grid.item(id_closest),part.position)
 			source[id_closest]+=charge*w1*w2
