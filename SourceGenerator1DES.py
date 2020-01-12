@@ -14,15 +14,6 @@ class SourceGenerator1DES(SourceGenerator1D):
 	"""
 	_type = "ES"
 
-	def get_closest(grid,xpart):
-		"""
-		finding an index of the closest grid note to the particle
-		"""
-		minarray=np.abs(grid-xpart*np.ones(grid.size))
-		xmin=np.amin(minarray)
-		xind = np.where(minarray == xmin)
-		return xind[0][0]
-
 	def get_source(ParticleCollection,grid):
 		"""
 		creating an empty source of the same size as grid
@@ -34,7 +25,7 @@ class SourceGenerator1DES(SourceGenerator1D):
 		w1 = 1.0 #there should be some weight coefficient; before, it was  grid.size/ParticleCollection.particles.size, but now it seems weird
 		s = Shape1DTriangle(dx)
 		for part in ParticleCollection.particles:
-			id_closest=SourceGenerator1DES.get_closest(grid,part.position)
+			id_closest=part.get_closest(grid)
 			charge=part.get_charge()
 			w2 = s.get_height(grid.item(id_closest),part.position)
 			source[id_closest]+=charge*w1*w2
