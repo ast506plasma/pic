@@ -9,15 +9,27 @@ class Particle:
 	"""
 	Documentation for Particle class
 	"""
-	def __init__(self, mass, charge, position, momentum, shape):
+	def __init__(self, mass, charge, type, position, momentum, shape):
 		"""
 		The constructor
 		"""
 		self._mass = mass
 		self._charge = charge
+
+		# Check valid particle type
+		if type in ['mobile', 'immobile']:
+			self.type = type
+		else:
+			raise ValueError("%s is not a valid particle type."%type)
+
 		self.position = position
 		self.momentum = momentum
 		self._shape = shape
+
+		# Check if mobile. If so, its mass must be 1.0
+		if ((self.type == "mobile") and (self._mass != 1.0)):
+			self._mass = 1.0
+			print("Mass of mobile particle set to unity.")
 
 	def get_mass(self):
 		"""

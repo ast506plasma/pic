@@ -19,8 +19,8 @@ def test_source_generator():
 
 	s = Shape1DTriangle(1)
 	pc = ParticleCollection()
-	p1 = Particle(1,-1, np.array([2.0]), np.array([0.0]), s)
-	p2 = Particle(4, 1, np.array([1.0]), np.array([0.0]), s)
+	p1 = Particle(1,-1, "mobile", np.array([2.0]), np.array([0.0]), s)
+	p2 = Particle(4, 1, "immobile", np.array([1.0]), np.array([0.0]), s)
 	pc.add_particles(p1)
 	pc.add_particles(p2)
 
@@ -31,8 +31,8 @@ def test_source_generator():
 	assert source.item(2) == -1.0
 
 
-	p1 = Particle(1,-1, np.array([2.2]), np.array([0.0]), s)
-	p2 = Particle(4, 1, np.array([8.9]), np.array([0.0]), s)
+	p1 = Particle(1,-1, "mobile", np.array([2.2]), np.array([0.0]), s)
+	p2 = Particle(4, 1, "immobile", np.array([8.9]), np.array([0.0]), s)
 	pc2 = ParticleCollection()
 	pc2.add_particles(p1)
 	pc2.add_particles(p2)
@@ -54,8 +54,8 @@ def test_source_generator_adv():
 
 	s = Shape1DTriangle(1)
 	pc3 = ParticleCollection()
-	p1 = Particle(1,-1, np.array([2.2]), np.array([0.0]), s)
-	p2 = Particle(4, 1, np.array([1.7]), np.array([0.0]), s)
+	p1 = Particle(1,-1, "mobile", np.array([2.2]), np.array([0.0]), s)
+	p2 = Particle(4, 1, "immobile", np.array([1.7]), np.array([0.0]), s)
 	pc3.add_particles(p1)
 	pc3.add_particles(p2)
 

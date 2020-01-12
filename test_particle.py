@@ -17,8 +17,8 @@ def test_particle_basic():
 	momentum = np.array([-1.3, 2.2, -3.1])
 	shape = Shape1DTriangle(2)
 
-	p = Particle(mass, charge, position, momentum, shape)
-	assert are_floats_equal(p.get_mass(), mass)
+	p = Particle(mass, charge, "mobile", position, momentum, shape)
+	assert are_floats_equal(p.get_mass(), 1.0)
 	assert are_floats_equal(p.get_charge(), charge)
 	assert p.position.all() == position.all()
 	assert p.momentum.all() == momentum.all()

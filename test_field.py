@@ -5,10 +5,11 @@ import numpy as np
 PRECISION = 1e-5
 GRID_SIZE = 100
 STEP_SIZE = 2*np.pi / GRID_SIZE
+TIME_STEP = 0.9
 
 def test_field_Grid1DCartesian():
     grid = Grid1DCartesian(np.array([STEP_SIZE]), np.array([GRID_SIZE]), False)
-    field = Field("Fourier", "linear", grid)
+    field = Field("Fourier", "linear", TIME_STEP, grid)
 
     assert field.Ndims == grid.get_Ndims()
     assert field._FieldSolver._type == "Fourier"
@@ -24,7 +25,7 @@ def test_field_solver_Grid1DCartesian(plot = False):
     x = grid.get_grid()
     rho = 0.1*np.sin(x)
 
-    field = Field("Fourier", "linear", grid)
+    field = Field("Fourier", "linear", TIME_STEP, grid)
 
     # Check that the grid was built correctly
     assert x[0] == 0.0
@@ -35,3 +36,5 @@ def test_field_solver_Grid1DCartesian(plot = False):
     if plot:
         import matplotlib.pyplot as plt
         plt.plot(x, field.ex)
+
+test_field_Grid1DCartesian()
