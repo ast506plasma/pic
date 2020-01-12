@@ -14,15 +14,6 @@ class SourceGenerator1DES(SourceGenerator1D):
 	"""
 	_type = "ES"
 
-	def get_closest(grid,xpart):
-		"""
-		finding an index of the closest grid node to the particle
-		"""
-		minarray=np.abs(grid-xpart*np.ones(grid.size))
-		xmin=np.amin(minarray)
-		xind = np.where(minarray == xmin)
-		return xind[0][0]
-
 	def get_source(ParticleCollection,grid):
 		"""
 		creating an empty source of the same size as grid
