@@ -18,11 +18,10 @@ class SourceGenerator1DES(SourceGenerator1D):
 		"""
 		finding an index of the closest grid note to the particle
 		"""
-		minarray=np.abs(grid-[xpart for i in range(grid.size)])
+		minarray=np.abs(grid-xpart*np.ones(grid.size))
 		xmin=np.amin(minarray)
 		xind = np.where(minarray == xmin)
 		return xind[0][0]
-		
 
 	def get_source(ParticleCollection,grid):
 		"""
