@@ -6,6 +6,7 @@ from fourierSolver import fourierSolver
 from Interpolator1DLinear import Interpolator1DLinear
 from Interpolator1DNearest import Interpolator1DNearest
 import Pusher
+import VelocityFixer
 
 """ Calculate the field given a charge density.
 

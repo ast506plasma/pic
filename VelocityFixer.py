@@ -1,24 +1,28 @@
-"""@package Pusher
+"""@package Velocity Fixer
 """
 
-class Pusher:
+class VelocityFixer:
     def __init__(self):
         """
-        Initialize the pusher.
+        Initialize the velocity fixer.
         """
         self.type = None
 
     def __call__(self, collection, field):
         pass
 
-class Pusher1D(Pusher):
+class VelocityFixer1D(VelocityFixer):
+    """Accelerate the mobile particles in a collection.
+    """
     def __init__(self):
         self.type = "1D"
 
     def __call__(self, collection, field):
-        """Push particles in a collection.
-        """
         firsttype = collection[0].type
+        if firsttype == "immobile":
+            # If particles are immobile, nothing occurs
+            return
+
         grid = field.grid.get_grid()
         gridhalf = field.grid.get_grid_shifted()
         grid_step = grid[1] - grid[0]
@@ -35,16 +39,9 @@ class Pusher1D(Pusher):
             force = field.ex[posidx] * force_func(gridhalf[posidx], pp.position)
 
             if pp.type == 'mobile':
-                # Push particle
+                # Accelerate particle
                 pp.momentum -= 0.5*field.time_step*force
-                pp.position += field.time_step*pp.momentum
             else:
                 pass
-
-            # Recalculate coordinate if particle is away from the grid after the push
-            if pp.position < grid[0]:
-                pp.position += grid[-1] - grid[0]
-            if pp.position > grid[-1]:
-                pp.position += grid[0] - grid[-1]
 
         return
