@@ -16,7 +16,7 @@ class SourceGenerator1DES(SourceGenerator1D):
 
 	def get_closest(grid,xpart):
 		"""
-		finding an index of the closest grid note to the particle
+		finding an index of the closest grid node to the particle
 		"""
 		minarray=np.abs(grid-xpart*np.ones(grid.size))
 		xmin=np.amin(minarray)
