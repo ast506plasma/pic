@@ -23,7 +23,7 @@ class Pusher1D(Pusher):
 
         move_func = lambda gridpos, pos: 1.0-np.abs(gridpos - pos) / grid_step
 
-        for i, pp in enumerate(collection):
+        for pp in collection:
             # Make sure all particles are of the same type
             assert(pp.type == firsttype,
                    "Particles in collection are not of the same type")
