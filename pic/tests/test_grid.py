@@ -1,4 +1,4 @@
-from Grid1DCartesian import *
+from pic.Grid1DCartesian import *
 import numpy as np
 
 # Maximum error when comparing float numbers

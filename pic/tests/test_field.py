@@ -1,9 +1,9 @@
-from Field import Field
-from Grid1DCartesian import Grid1DCartesian
-from Shape1DTriangle import Shape1DTriangle
-from Particle import Particle
-from ParticleCollection import ParticleCollection
-from SourceGenerator1DES import SourceGenerator1DES
+from pic.Field import Field
+from pic.Grid1DCartesian import Grid1DCartesian
+from pic.Shape1DTriangle import Shape1DTriangle
+from pic.Particle import Particle
+from pic.ParticleCollection import ParticleCollection
+from pic.SourceGenerator1DES import SourceGenerator1DES
 import numpy as np
 
 PRECISION = 1e-5

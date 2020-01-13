@@ -3,7 +3,7 @@ Documentation for SourceGenerator1D class
 """
 
 import numpy as np
-from SourceGenerator import *
+from pic.SourceGenerator import *
 
 class SourceGenerator1D(SourceGenerator):
 	"""

@@ -2,7 +2,7 @@
 Documentation for Interpolator1D class (ABC)
 """
 
-from Interpolator import *
+from pic.Interpolator import *
 
 class Interpolator1D(Interpolator):
 	"""

@@ -3,7 +3,7 @@ Documentation for Grid1D class (ABC)
 """
 
 import numpy as np
-from Grid import *
+from pic.Grid import *
 
 class Grid1D(Grid):
 	"""

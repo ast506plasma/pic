@@ -2,7 +2,7 @@
 Fourier Solver class
 """
 
-from FieldSolver import FieldSolver
+from pic.FieldSolver import FieldSolver
 import numpy as np
 
 """ Fourier method for solving the field given rho and grid.

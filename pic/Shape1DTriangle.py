@@ -3,7 +3,7 @@ Documentation for Shape1DTrangle class
 """
 
 import numpy as np
-from Shape1D import *
+from pic.Shape1D import *
 
 class Shape1DTriangle(Shape1D):
 	"""
@@ -24,4 +24,3 @@ class Shape1DTriangle(Shape1D):
 		"""
 		distance = np.abs(position - particle_position)
 		return max(1  - distance / self._size, 0) / self._size
-		
