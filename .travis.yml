@@ -2,4 +2,4 @@ language: python
 install:
  - pip install scipy
 script: 
- - pytest *.py
+ - pytest pic/tests/*.py

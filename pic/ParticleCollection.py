@@ -2,7 +2,7 @@
 Documentaion for Particle Collection
 """
 
-from Particle import *
+from pic.Particle import *
 
 class ParticleCollection:
 	def __init__(self):

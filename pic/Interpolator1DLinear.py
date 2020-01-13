@@ -1,14 +1,14 @@
-"""@package Interpolator1DNearest
-Documentation for Interpolator1DNearest class
+"""@package Interpolator1DLinear
+Documentation for Interpolator1DLinear class
 """
 
-from Interpolator1D import *
+from pic.Interpolator1D import *
 from scipy import interpolate
 import numpy as np
 
-class Interpolator1DNearest(Interpolator1D):
+class Interpolator1DLinear(Interpolator1D):
 	"""
-	Derived class of Interpolator1D using nearest interpolation
+	Derived class of Interpolator1D using linear interpolation
 	"""
 
 	def __call__(self, position, field, grid):
@@ -22,5 +22,5 @@ class Interpolator1DNearest(Interpolator1D):
 		elif position >= grid[-1]:
 			return field[-1]
 
-		p = interpolate.interp1d(grid, field, kind = "nearest")
+		p = interpolate.interp1d(grid, field, kind = "linear")
 		return p(position)

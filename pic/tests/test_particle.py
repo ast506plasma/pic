@@ -1,5 +1,5 @@
-from Particle import *
-from Shape1DTriangle import *
+from pic.Particle import *
+from pic.Shape1DTriangle import *
 import numpy as np
 
 PRECISION = 1e-5

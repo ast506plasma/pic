@@ -1,8 +1,8 @@
-from SourceGenerator1DES import *
-from Grid1DCartesian import *
-from Shape1DTriangle import *
-from Particle import *
-from ParticleCollection import *
+from pic.SourceGenerator1DES import *
+from pic.Grid1DCartesian import *
+from pic.Shape1DTriangle import *
+from pic.Particle import *
+from pic.ParticleCollection import *
 import numpy as np
 
 # Maximum error when comparing float numbers

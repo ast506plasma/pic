@@ -1,5 +1,5 @@
-from ParticleCollection import *
-from Shape1DTriangle import *
+from pic.ParticleCollection import *
+from pic.Shape1DTriangle import *
 import numpy as np
 
 # compare 2 Particles

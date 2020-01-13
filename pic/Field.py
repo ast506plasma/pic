@@ -2,11 +2,11 @@
 Field class
 """
 
-from fourierSolver import fourierSolver
-from Interpolator1DLinear import Interpolator1DLinear
-from Interpolator1DNearest import Interpolator1DNearest
-import Pusher
-import VelocityFixer
+from pic.fourierSolver import fourierSolver
+from pic.Interpolator1DLinear import Interpolator1DLinear
+from pic.Interpolator1DNearest import Interpolator1DNearest
+import pic.Pusher as Pusher
+import pic.VelocityFixer as VelocityFixer
 
 """ Calculate the field given a charge density.
 

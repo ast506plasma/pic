@@ -3,8 +3,8 @@ Documentation for SourceGenerator1DES class
 """
 
 import numpy as np
-from SourceGenerator1D import *
-from Shape1DTriangle import *
+from pic.SourceGenerator1D import *
+from pic.Shape1DTriangle import *
 
 class SourceGenerator1DES(SourceGenerator1D):
 	"""

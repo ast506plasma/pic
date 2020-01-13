@@ -3,7 +3,7 @@ Documentation for Grid1DCartesian class
 """
 
 import numpy as np
-from Grid1D import *
+from pic.Grid1D import *
 
 class Grid1DCartesian(Grid1D):
 	"""
@@ -22,4 +22,4 @@ class Grid1DCartesian(Grid1D):
 		dx=self._grid_step.item(self._Ndims-1)
 		Nx=self._grid_size.item(self._Ndims-1)
 		self._grid = np.linspace(0.0,dx*(Nx-1),Nx)
-		self._grid_shifted = np.linspace(dx/2.0,dx*(Nx-1)-dx/2.0,Nx-1)              
+		self._grid_shifted = np.linspace(dx/2.0,dx*(Nx-1)-dx/2.0,Nx-1)
