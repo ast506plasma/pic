@@ -33,8 +33,8 @@ class VelocityFixer1DLeapFrog(VelocityFixer):
 
         for pp in collection.particles:
             # Make sure all particles are of the same type
-            assert(pp.type == firsttype,
-                   "Particles in collection are not of the same type")
+            assert pp.type == firsttype,\
+                   "Particles in collection are not of the same type"
 
             force = 0.0
             posidx = pp.get_closest(gridhalf)
