@@ -14,7 +14,7 @@ class SourceGenerator1DES(SourceGenerator1D):
 	"""
 	_type = "ES"
 
-	def get_source(ParticleCollection,grid):
+	def get_source(self, ParticleCollection, grid):
 		"""
 		creating an empty source of the same size as grid
 		and iterating over all particles

@@ -5,6 +5,8 @@ Field class
 from fourierSolver import fourierSolver
 from Interpolator1DLinear import Interpolator1DLinear
 from Interpolator1DNearest import Interpolator1DNearest
+import Pusher
+import VelocityFixer
 
 """ Calculate the field given a charge density.
 
@@ -12,11 +14,12 @@ Calculate the electrostatic field at a position on the grid
 using an interpolation method.
 """
 class Field:
-    def __init__(self, FieldSolver_type, interp_type, grid):
+    def __init__(self, FieldSolver_type, interp_type, time_step, grid):
         self.grid = grid
         self.Ndims = self.grid.get_Ndims()
         self._FieldSolver = self._initialize_solver(FieldSolver_type)
         self._interpolator = self._initialize_interp(interp_type)
+        self.time_step = time_step
         self.ex = None
 
     def _initialize_solver(self, FieldSolver_type):
@@ -66,3 +69,20 @@ class Field:
                 grid = self.grid.get_grid()
 
         return self._interpolator(position, self.ex, grid)
+
+    def get_updaters(self, type):
+        """Obtain the updaters (pusher, velocity fixer) for this field.
+        """
+        type = "{0}D{1}".format(self.Ndims, type)
+
+        try:
+            pusher = getattr(Pusher, "Pusher{}".format(type))
+        except AttributeError:
+            raise ValueError("Unknown pusher type %s"%type)
+
+        try:
+            velfix = getattr(VelocityFixer, "VelocityFixer{}".format(type))
+        except AttributeError:
+            raise ValueError("Unknown velocity fixer type %s"%type)
+
+        return pusher(), velfix()
