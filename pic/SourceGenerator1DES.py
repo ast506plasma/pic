@@ -22,7 +22,7 @@ class SourceGenerator1DES(SourceGenerator1D):
 		source_size = grid.size #size of the source array
 		dx = np.abs(grid.item(1)-grid.item(0)) #grid cell size
 		source = np.zeros(source_size) # creating an empty source array
-		w1 = 1.0 #there should be some weight coefficient; before, it was  grid.size/ParticleCollection.particles.size, but now it seems weird
+		w1 =0.5*grid.size/len(ParticleCollection.particles)
 		s = Shape1DTriangle(dx)
 		for part in ParticleCollection.particles:
 			id_closest=part.get_closest(grid)
