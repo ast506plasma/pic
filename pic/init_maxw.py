@@ -65,13 +65,14 @@ def init_maxw(xmin=1.0, xmax=9.0, n0=1, T0=0.01, V0=0.0, NPIC=1000, MMI=100, swi
 	xi=[x for x in xe]
 
 	s = Shape1DTriangle(swidth)
-	pc = ParticleCollection()
+	epc = ParticleCollection()
+	ipc = ParticleCollection()
 	i=0
 	while (i<NPIC):
 		p1 = Particle(1,-1, "mobile", np.array([xe[i]]), np.array([pex[i]]), s)
 		p2 = Particle(MMI, 1, "immobile", np.array([xi[i]]), np.array([0.0]), s)
-		pc.add_particles(p1)
-		pc.add_particles(p2)
+		epc.add_particles(p1)
+		ipc.add_particles(p2)
 		i+=1
 	
-	return pc
+	return epc, ipc
