@@ -17,22 +17,15 @@ from pic.VelocityFixer import *
 from pic.Interpolator1DLinear import *
 from pic.Field1D import *
 from pic.fourierSolver import *
+from pic.output import *
 
-
+#importing simulation parameters into main.py
+from conf import *
 
 #initialize simulation
-dt=0.09 #0.01* wpe0^-1
-Tfinish=10 #10* wpe0^-1
-xmin=0.0 #zero de0
-xmax=10.0 #ten de0
-T0=0.001 #temperature in dim units
-n0=1 # in dim units
-NPIC=5000 #number of one type of particles
-Nsteps=int(Tfinish/dt)
-Nx=np.array([100]) #number of grid cells
+Nsteps=int(Tfinish/dt) #calculating number of timesteps
+Nx=np.array([Grid_Size]) #creating an array with grid size
 dx=np.array([(xmax-xmin)/Nx.item(0)]) #grid cell size, in de0
-MMI=200000 #mass ratio
-V0=0.0 #flow speed
 
 #creating a plasma distribution
 epc = ParticleCollection()
@@ -49,6 +42,7 @@ pusher, velfixer = field.get_updaters("LeapFrog")
 generator = SourceGenerator1DES()
 
 i=0
+full_output(field,epc,ipc,datadir,i)
 while(i<Nsteps):
 	currtime=time.time()
 	print("Nstep=",str(i+1), ", time=",str(int((i+1)*dt*1000)/1000), "wpe0^-1")
@@ -61,4 +55,6 @@ while(i<Nsteps):
 	velfixer(epc, field)
 	velfixer(ipc, field)
 	i+=1
+	if(i%Nout ==0):
+		full_output(field,epc,ipc,datadir,i)
 	print('Timestep took ',str(int(1000*(time.time()-currtime))/1000),' seconds')
