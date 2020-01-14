@@ -13,6 +13,7 @@ TIME_STEP = 0.9
 
 def get_1D():
     grid = Grid1DCartesian(np.array([STEP_SIZE]), np.array([GRID_SIZE]), False)
+    grid.set_grid()
     field = Field("Fourier", "linear", TIME_STEP, grid)
 
     return grid, field
@@ -30,7 +31,6 @@ def test_field_solver_Grid1DCartesian(plot = False):
     # with values between +/- 0.5.
     grid, field = get_1D()
 
-    grid.set_grid()
     x = grid.get_grid()
     rho = 0.1*np.sin(x)
 
@@ -46,7 +46,6 @@ def test_field_solver_Grid1DCartesian(plot = False):
 
 def test_field_updaters_1DLeapFrog():
     grid, field = get_1D()
-    grid.set_grid()
     pusher, velfixer = field.get_updaters("LeapFrog")
     assert pusher.type == velfixer.type
     assert pusher.type == "1DLeapFrog"

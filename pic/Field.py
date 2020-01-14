@@ -7,6 +7,7 @@ from pic.Interpolator1DLinear import Interpolator1DLinear
 from pic.Interpolator1DNearest import Interpolator1DNearest
 import pic.Pusher as Pusher
 import pic.VelocityFixer as VelocityFixer
+import numpy as np
 
 """ Calculate the field given a charge density.
 
@@ -20,7 +21,7 @@ class Field:
         self._FieldSolver = self._initialize_solver(FieldSolver_type)
         self._interpolator = self._initialize_interp(interp_type)
         self.time_step = time_step
-        self.ex = None
+        self.ex = np.zeros(grid.get_grid().size)
 
     def _initialize_solver(self, FieldSolver_type):
         """Return the FieldSolver given its type.

@@ -46,7 +46,6 @@ field = Field("Fourier", "linear", dt, grid)
 
 pusher, velfixer = field.get_updaters("LeapFrog")
 
-field.ex = np.zeros(grid.get_grid().size)
 generator = SourceGenerator1DES()
 
 i=0
