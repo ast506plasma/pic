@@ -74,5 +74,4 @@ def init_maxw(xmin=1.0, xmax=9.0, n0=1, T0=0.01, V0=0.0, NPIC=1000, MMI=100, swi
 		epc.add_particles(p1)
 		ipc.add_particles(p2)
 		i+=1
-	
 	return epc, ipc

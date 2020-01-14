@@ -32,11 +32,12 @@ Nsteps=int(Tfinish/dt)
 Nx=np.array([100]) #number of grid cells
 dx=np.array([(xmax-xmin)/Nx.item(0)]) #grid cell size, in de0
 MMI=200000 #mass ratio
+V0=0.0 #flow speed
 
 #creating a plasma distribution
 epc = ParticleCollection()
 ipc = ParticleCollection()
-epc, ipc = init_maxw(xmin=xmin, xmax=xmax, n0=n0, T0=T0, V0=0.0, NPIC=NPIC, MMI=MMI, swidth=dx.item(0))
+epc, ipc = init_maxw(xmin=xmin, xmax=xmax, n0=n0, T0=T0, V0=V0, NPIC=NPIC, MMI=MMI, swidth=dx.item(0))
 
 #creating a grid&field object
 grid = Grid1DCartesian(dx,Nx,False)
@@ -45,12 +46,8 @@ field = Field("Fourier", "linear", dt, grid)
 
 pusher, velfixer = field.get_updaters("LeapFrog")
 
-field.ex = [0.0 for i in range(len(grid.get_grid()))]
+field.ex = np.zeros(grid.get_grid().size)
 generator = SourceGenerator1DES()
-erho = generator.get_source(epc, grid.get_grid())
-irho = generator.get_source(ipc, grid.get_grid())
-rho = erho + irho
-field.solve(rho)
 
 i=0
 while(i<Nsteps):
@@ -58,11 +55,11 @@ while(i<Nsteps):
 	print("Nstep=",str(i+1), ", time=",str(int((i+1)*dt*1000)/1000), "wpe0^-1")
 	pusher(epc, field)
 	pusher(ipc, field)
-	velfixer(epc, field)
-	velfixer(ipc, field)
 	erho = generator.get_source(epc, grid.get_grid())
 	irho = generator.get_source(ipc, grid.get_grid())
 	rho = erho + irho
 	field.solve(rho)
+	velfixer(epc, field)
+	velfixer(ipc, field)
 	i+=1
 	print('Timestep took ',str(int(1000*(time.time()-currtime))/1000),' seconds')
