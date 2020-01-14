@@ -1,5 +1,3 @@
-from unittest.mock import Mock
-from unittest.mock import MagicMock
 from pic.Interpolator1DNearest import *
 import numpy as np
 
@@ -16,9 +14,8 @@ def test_interpolator_basic():
 	# Create a mock grid that represent a field
 	x = np.array([0.5, 1.5, 2.5, 3.5, 4.5])
 	y = 2 * x
-	field = Mock()
-	grid = x #MagicMock(return_value = x)
-	field = y #MagicMock(return_value = y)
+	grid = x
+	field = y
 
 	# test basic cases
 	assert np.abs(interpolator(1.5, field, grid) - 3.0) < PRECISION
