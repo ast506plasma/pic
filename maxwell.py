@@ -22,7 +22,7 @@ from pic.fourierSolver import *
 from pic.output import *
 
 #importing simulation parameters into main.py
-from conf import *
+from conf_maxwell import *
 
 def simulate():
 	# Check if output directory exists
@@ -72,6 +72,27 @@ def simulate():
 
 	return
 
+
+def plots():
+	"""
+	Generate a bunch of plots
+	"""
+	i=0
+	#getting the grid
+	grid=np.loadtxt(datadir+'grid.out')
+	#getting number of timesteps in simulation
+	Nsteps=int(Tfinish/dt)
+	
+	for i in range(Nsteps):
+		try:
+			elex=np.loadtxt(datadir+'ele_'+str(i)+'.out',usecols=(0))
+			elepx=np.loadtxt(datadir+'ele_'+str(i)+'.out',usecols=(1))
+			ex=np.loadtxt(datadir+'ex_'+str(i)+'.out')
+			postprocess(datadir,elex,elepx,grid,ex,dt,i,xmax)
+			print("Output generated for i=",i)
+		except:
+			pass
+
 if __name__ == "__main__":
 	argnum = len(sys.argv)
 	if argnum == 1:
@@ -79,3 +100,4 @@ if __name__ == "__main__":
 	else:
 		if sys.argv[1] == "plot":
 			print("Plotting output in %s"%datadir)
+			plots()

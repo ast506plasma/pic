@@ -10,4 +10,4 @@ Grid_Size=100 #number of grid cells
 MMI=200000 #mass ratio
 V0=0.0 #flow speed
 Nout=10 #frequency of output
-datadir="maxwell_out/" #output directory
+datadir="./maxwell_out/" #output directory
