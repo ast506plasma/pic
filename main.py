@@ -15,7 +15,7 @@ from pic.SourceGenerator1DES import *
 from pic.Pusher import *
 from pic.VelocityFixer import *
 from pic.Interpolator1DLinear import *
-from pic.Field import *
+from pic.Field1D import *
 from pic.fourierSolver import *
 
 
@@ -42,7 +42,7 @@ epc, ipc = init_maxw(xmin=xmin, xmax=xmax, n0=n0, T0=T0, V0=V0, NPIC=NPIC, MMI=M
 #creating a grid&field object
 grid = Grid1DCartesian(dx,Nx,False)
 grid.set_grid()
-field = Field("Fourier", "linear", dt, grid)
+field = Field1D("Fourier", "linear", dt, grid)
 
 pusher, velfixer = field.get_updaters("LeapFrog")
 

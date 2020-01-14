@@ -1,4 +1,4 @@
-from pic.Field import Field
+from pic.Field1D import Field1D
 from pic.Grid1DCartesian import Grid1DCartesian
 from pic.Shape1DTriangle import Shape1DTriangle
 from pic.Particle import Particle
@@ -14,7 +14,7 @@ TIME_STEP = 0.9
 def get_1D():
     grid = Grid1DCartesian(np.array([STEP_SIZE]), np.array([GRID_SIZE]), False)
     grid.set_grid()
-    field = Field("Fourier", "linear", TIME_STEP, grid)
+    field = Field1D("Fourier", "linear", TIME_STEP, grid)
 
     return grid, field
 
