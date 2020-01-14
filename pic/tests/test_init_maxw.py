@@ -5,7 +5,7 @@ import numpy as np
 from scipy.stats import norm
 
 
-TEMP_PRECISION = 1e-3 #precision to calculate temperature
+TEMP_PRECISION = 1e-1 #precision to calculate temperature
 
 def test_init_maxw():
 	pc = ParticleCollection()
@@ -28,10 +28,11 @@ def test_init_maxw():
 
 def test_temperature():
 	pc = ParticleCollection()
-	pc = init_maxw(xmin=1.0, xmax=9.0, n0=1, T0=0.01, V0=0.0, NPIC=100, MMI=100, swidth=0.1)
+	pc = init_maxw(xmin=1.0, xmax=9.0, n0=1, T0=0.01, V0=0.0, NPIC=1000, MMI=100, swidth=0.1)
 	pex =[]
 	for part in pc.particles:
 		if (part.type == "mobile"):
 			pex.append(part.momentum)
 	mu, std = norm.fit(pex)
-	assert np.abs(std*std/4.0 - 0.01)<TEMP_PRECISION
+	ElectronTemp = std*std/4.0
+	assert np.abs((ElectronTemp - 0.01)/ElectronTemp)<TEMP_PRECISION
