@@ -22,6 +22,8 @@ class SourceGenerator1DES(SourceGenerator1D):
 		source_size = grid.size #size of the source array
 		dx = np.abs(grid.item(1)-grid.item(0)) #grid cell size
 		source = np.zeros(source_size) # creating an empty source array
+		#the next line TRIES to normalize the procedure of deposition
+		#of finite length charge onto a point
 		w1 =0.5*grid.size/len(ParticleCollection.particles)
 		s = Shape1DTriangle(dx)
 		for part in ParticleCollection.particles:
