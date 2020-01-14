@@ -19,22 +19,13 @@ from pic.Field import *
 from pic.fourierSolver import *
 from pic.output import *
 
+#importing simulation parameters into main.py
+from conf import *
 
 #initialize simulation
-dt=0.09 #0.01* wpe0^-1
-Tfinish=10 #10* wpe0^-1
-xmin=0.0 #zero de0
-xmax=10.0 #ten de0
-T0=0.001 #temperature in dim units
-n0=1 # in dim units
-NPIC=5000 #number of one type of particles
-Nsteps=int(Tfinish/dt)
-Nx=np.array([100]) #number of grid cells
+Nsteps=int(Tfinish/dt) #calculating number of timesteps
+Nx=np.array([Grid_Size]) #creating an array with grid size
 dx=np.array([(xmax-xmin)/Nx.item(0)]) #grid cell size, in de0
-MMI=200000 #mass ratio
-V0=0.0 #flow speed
-Nout=10 #frequency of output
-datadir="./"
 
 #creating a plasma distribution
 epc = ParticleCollection()
