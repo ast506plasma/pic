@@ -5,6 +5,9 @@ Documentaion for Particle Collection
 from pic.Particle import *
 
 class ParticleCollection:
+	"""
+	Stores particles
+	"""
 	def __init__(self):
 		"""
 		Creates an empty particle collection
