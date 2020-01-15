@@ -21,12 +21,12 @@ def test_interpolator_basic():
 	field.grid.get_grid = MagicMock(return_value = x)
 	field.get_field = MagicMock(return_value = y)
 
-	interpolator = Interpolator1DLinear(field)
+	interpolator = Interpolator1DNearest(field)
 
 	# test basic cases
 	assert np.abs(interpolator(1.5) - 3.0) < PRECISION
-	assert np.abs(interpolator(1.9) - 3.8) < PRECISION
-	assert np.abs(interpolator(2.2) - 4.4) < PRECISION
+	assert np.abs(interpolator(1.9) - 3.0) < PRECISION
+	assert np.abs(interpolator(2.2) - 5.0) < PRECISION
 
 	# test a boundary case
 	# for boundary case the interpolator returns the value at the lower

@@ -4,7 +4,8 @@ Field class
 
 from pic.Field import Field
 from pic.fourierSolver import fourierSolver
-import pic.Interpolator1D as Interpolator1D
+from pic.Interpolator1DLinear import Interpolator1DLinear
+from pic.Interpolator1DNearest import Interpolator1DNearest
 import pic.Pusher as Pusher
 import pic.VelocityFixer as VelocityFixer
 import numpy as np
@@ -35,12 +36,12 @@ class Field1D(Field):
     def _initialize_interp(self):
         """Return the Interpolator given its type.
         """
-        try:
-            interp = getattr(Interpolator1D, "Interpolator1D{}".format(self._interp_type))
-        except AttributeError:
-            raise ValueError("Unknown interpolator 1D%s"%self._interp_type)
-
-        return interp(self)
+        if self._interp_type == "Linear":
+            return Interpolator1DLinear(self)
+        elif self._interp_type == "Nearest":
+            return Interpolator1DNearest(self)
+        else:
+            raise ValueError("Unknown interpolator type 1D%s"%self._interp_type)
 
     def solve(self, rho):
         """Solve the field using the field solver
