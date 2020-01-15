@@ -1,4 +1,5 @@
 #Plasma project for AST506
+
 Here you may find an implementation of non-relativistic electrostatic 1D code which solves Vlasov-Poisson system equations for an arbitrary number of charged particle population.
 The method of solution is a so-called "particle-in-cell" algorithm: https://en.wikipedia.org/wiki/Particle-in-cell
 
