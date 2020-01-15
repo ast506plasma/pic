@@ -2,6 +2,9 @@ Here you may find an implementation of non-relativistic electrostatic 1D code wh
 The method of solution is a so-called "particle-in-cell" algorithm: https://en.wikipedia.org/wiki/Particle-in-cell
 
 Code uses the Anaconda3 package to operate
+
 To run the code, type "python3 maxwell.py"
+
 To generate plots for the particular run, type "python3 maxwell.py plot"
+
 Raw output data is saved in ./maxwell\_out/
