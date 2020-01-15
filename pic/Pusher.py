@@ -25,6 +25,9 @@ class Pusher1DLeapFrog(Pusher):
         gridhalf = field.grid.get_grid_shifted()
         grid_step = grid[1] - grid[0]
 
+        def force_func(gridpos, pos):
+            return 1.0 - np.abs(gridpos - pos) / grid_step
+
         for pp in collection.particles:
             # Make sure all particles are of the same type
             assert pp.type == firsttype,\
@@ -32,9 +35,7 @@ class Pusher1DLeapFrog(Pusher):
 
             force = 0.0
             posidx = pp.get_closest(gridhalf)
-
-            def force_func(gridpos, pos):
-                return 1.0 - np.abs(gridpos - pos) / grid_step
+            force = field.ex[posidx] * force_func(gridhalf[posidx], pp.position)
 
             if pp.type == 'mobile':
                 # Push particle
