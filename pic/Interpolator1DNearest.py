@@ -11,16 +11,25 @@ class Interpolator1DNearest(Interpolator1D):
 	Derived class of Interpolator1D using nearest interpolation
 	"""
 
-	def __call__(self, position, field, grid):
+	def __call__(self, position):
 		"""
 		Return interpolated value of the field at the specified position
 		"""
 		# handles extrapolation cases
 		# returns the value at the end of the grid
-		if position <= grid[0]:
-			return field[0]
-		elif position >= grid[-1]:
-			return field[-1]
+		if position <= self._grid_start:
+			return self._field_start
+		elif position >= self._grid_end:
+			return self._field_end
+		else:
+			return self._interp(position)
 
-		p = interpolate.interp1d(grid, field, kind = "nearest")
-		return p(position)
+	def _get_interp(self, field):
+		grid = field.grid.get_grid()
+		ex = field.get_field()
+		self._grid_start = grid[0]
+		self._grid_end = grid[-1]
+		self._field_start = ex[0]
+		self._field_end = ex[-1]
+
+		return interpolate.interp1d(grid, ex, kind = "nearest")

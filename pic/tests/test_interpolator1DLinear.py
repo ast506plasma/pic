@@ -11,21 +11,24 @@ PRECISION = 1e-7
 # Since this function is linear, the interpolated value should equal
 # the exact value.
 def test_interpolator_basic():
-	interpolator = Interpolator1DLinear()
-
 	# Create a mock grid that represent a field
 	x = np.array([0.5, 1.5, 2.5, 3.5, 4.5])
 	y = 2 * x
-	# field = Mock()
-	grid = x #MagicMock(return_value = x)
-	field = y #MagicMock(return_value = y)
+	
+	field = Mock()
+	field.grid = MagicMock()
+	field.grid.get_if_shifted = MagicMock(return_value = False)
+	field.grid.get_grid = MagicMock(return_value = x)
+	field.get_field = MagicMock(return_value = y)
+
+	interpolator = Interpolator1DLinear(field)
 
 	# test basic cases
-	assert np.abs(interpolator(1.5, field, grid) - 3.0) < PRECISION
-	assert np.abs(interpolator(2.5, field, grid) - 5.0) < PRECISION
-	assert np.abs(interpolator(2.8, field, grid) - 5.6) < PRECISION
-	assert np.abs(interpolator(3.0, field, grid) - 6.0) < PRECISION
+	assert np.abs(interpolator(1.5) - 3.0) < PRECISION
+	assert np.abs(interpolator(2.5) - 5.0) < PRECISION
+	assert np.abs(interpolator(2.8) - 5.6) < PRECISION
+	assert np.abs(interpolator(3.0) - 6.0) < PRECISION
 
 	# test for position is outside shifted-grid but stil inside grid
-	assert np.abs(interpolator(0.1, field, grid) - 1.0) < PRECISION
-	assert np.abs(interpolator(4.8, field, grid) - 9.0) < PRECISION
+	assert np.abs(interpolator(0.1) - 1.0) < PRECISION
+	assert np.abs(interpolator(4.8) - 9.0) < PRECISION

@@ -19,10 +19,11 @@ class Field1D(Field):
     def __init__(self, FieldSolver_type, interp_type, time_step, grid):
         self.grid = grid
         self.Ndims = self.grid.get_Ndims()
-        self._FieldSolver = self._initialize_solver(FieldSolver_type)
-        self._interpolator = self._initialize_interp(interp_type)
         self.time_step = time_step
-        self.ex = np.zeros(grid.get_grid().size)
+        self._ex = np.zeros(grid.get_grid().size)
+        self._FieldSolver = self._initialize_solver(FieldSolver_type)
+        self._interp_type = interp_type
+        self._interpolator = self._initialize_interp()
 
     def _initialize_solver(self, FieldSolver_type):
         """Return the FieldSolver given its type.
@@ -32,45 +33,31 @@ class Field1D(Field):
         else:
             raise ValueError("%s is not a field solver type"%FieldSolver_type)
 
-    def _initialize_interp(self, interp_type):
+    def _initialize_interp(self):
         """Return the Interpolator given its type.
         """
-        if self.Ndims == 1:
-            switcher1D = {
-                "linear": Interpolator1DLinear(),
-                "nearest": Interpolator1DNearest(),
-            }
-            interp = switcher1D.get(interp_type, 1) # 1 for error catcher
+        if self._interp_type == "Linear":
+            return Interpolator1DLinear(self)
+        elif self._interp_type == "Nearest":
+            return Interpolator1DNearest(self)
         else:
-            raise ValueError(Ndims) # Invalid dimension
-
-        # Check if interp_type was available for Ndims
-        if isinstance(interp, int):
-            raise ValueError("%s is not a valid %dD interpolator"%(interp_type,
-                                                                   self.Ndims))
-        else:
-            return interp
+            raise ValueError("Unknown interpolator type 1D%s"%self._interp_type)
 
     def solve(self, rho):
         """Solve the field using the field solver
         given a charge density (rho).
+        Update the interpolator.
         """
-        self.ex = self._FieldSolver(rho, self.grid)
+        self._ex = self._FieldSolver(rho, self.grid)
+        self._interpolator = self._initialize_interp()
 
         return
 
     def interpolate(self, position):
         """Interpolate field values at given positions.
         """
-        if self.ex is None:
-            raise RuntimeError("The field hasn't been solved yet.")
-        else:
-            if self.grid.is_shifted == True:
-                grid = self.grid.get_grid_shifted()
-            else:
-                grid = self.grid.get_grid()
 
-        return self._interpolator(position, self.ex, grid)
+        return self._interpolator(position)
 
     def get_updaters(self, type):
         """Obtain the updaters (pusher, velocity fixer) for this field.

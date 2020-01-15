@@ -12,10 +12,11 @@ class Field:
         """
         self.grid = grid
         self.Ndims = self.grid.get_Ndims()
+        self.time_step = time_step
+        self._interp_type = interp_type
+        self._ex = np.zeros(grid.get_grid().size)
         self._FieldSolver = self._initialize_solver(FieldSolver_type)
         self._interpolator = self._initialize_interp(interp_type)
-        self.time_step = time_step
-        self.ex = np.zeros(grid.get_grid().size)
 
     def _initialize_solver(self, FieldSolver_type):
         """
@@ -28,6 +29,12 @@ class Field:
         Return an interpolator
         """
         return
+
+    def get_field(self):
+        """
+        Return the field
+        """
+        return self._ex
 
     def solve(self, rho):
         """

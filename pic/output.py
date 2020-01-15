@@ -20,7 +20,7 @@ def full_output(field,epc,ipc,datadir,numstep):
 		ionx[i]=ipc.particles[i].position
 		ionpx[i]=ipc.particles[i].momentum
 	np.savetxt(datadir+'grid.out',field.grid.get_grid(), delimiter=',')
-	np.savetxt(datadir+'ex_'+str(numstep)+'.out',field.ex, delimiter=',')
+	np.savetxt(datadir+'ex_'+str(numstep)+'.out',field.get_field(), delimiter=',')
 	np.savetxt(datadir+'ele_'+str(numstep)+'.out',np.array(list(zip(elex,elepx))))
 	np.savetxt(datadir+'ion_'+str(numstep)+'.out',np.array(list(zip(ionx,ionpx))))
 

@@ -39,7 +39,7 @@ class VelocityFixer1DLeapFrog(VelocityFixer):
 
             force = 0.0
             posidx = pp.get_closest(gridhalf)
-            force = field.ex[posidx] * force_func(gridhalf[posidx], pp.position)
+            force = field.get_field()[posidx] * force_func(gridhalf[posidx], pp.position)
 
             # Accelerate particle
             pp.momentum -= 0.5*field.time_step*force
