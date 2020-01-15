@@ -6,7 +6,7 @@ Authors: Nijaid Arredondo (nijaid@princeton.edu),
          Sirawich Pipatprathanporn (sirawich@princeton.edu).
 
 Here you may find an implementation of non-relativistic electrostatic 1D code which solves Vlasov-Poisson system equations for an arbitrary number of charged particle population.
-The method of solution is a so-called "particle-in-cell" algorithm, which is describedin https://en.wikipedia.org/wiki/Particle-in-cell.
+The method of solution is a so-called "particle-in-cell" algorithm, which is described in https://en.wikipedia.org/wiki/Particle-in-cell.
 
 # Requirements
 
@@ -32,7 +32,8 @@ cd docs/
 doxygen
 ```
 This will produce an [HTML](docs/html/index.html) and a [LaTeX](docs/latex/refman.tex).
-The latter can be made into a PDF if **LaTeX** is installed by running
+The latter can be made into a PDF if **LaTeX** is installed.
+Enter in the command line:
 ```
 cd docs/latex/
 make
@@ -81,6 +82,7 @@ At each data output iteration, a plot of the following is provided:
   * phase space histogram
   * electric field over the grid
   * Fourier transform of the field
+
 These are made by entering:
 ```
 python [driver] plot
