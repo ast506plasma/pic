@@ -11,6 +11,10 @@ class Pusher:
         self.type = None
 
     def __call__(self, collection, field):
+        """
+        """
+        Push particles in a collection given the field they are on.
+        """
         pass
 
 class Pusher1DLeapFrog(Pusher):
@@ -18,7 +22,8 @@ class Pusher1DLeapFrog(Pusher):
         self.type = "1DLeapFrog"
 
     def __call__(self, collection, field):
-        """Push particles in a collection.
+        """
+        Push particles in a collection given the field they are on.
         """
         firsttype = collection.particles[0].type
         mobile = False
