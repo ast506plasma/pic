@@ -57,7 +57,7 @@ class Particle:
 		"""
 		Find the index of the closest grid node to the particle
 		"""
-		minarray=np.abs(grid-self.position*np.ones(grid.size))
+		minarray=np.abs(grid-self.position)
 		xmin=np.amin(minarray)
 		xind = np.where(minarray == xmin)
 		return xind[0][0]
