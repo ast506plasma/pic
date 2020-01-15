@@ -23,6 +23,7 @@ For compiling the documentation, **Doxygen** is required.
 
 The code itself needs no compiling.
 Hooray for interpreted languages!
+Simply clone it onto your machine.
 
 # Documentation
 
