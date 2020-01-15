@@ -29,8 +29,6 @@ class VelocityFixer1DLeapFrog(VelocityFixer):
         gridhalf = field.grid.get_grid_shifted()
         grid_step = grid[1] - grid[0]
 
-        force_func = lambda gridpos, pos: 1.0-np.abs(gridpos - pos) / grid_step
-
         for pp in collection.particles:
             # Make sure all particles are of the same type
             assert pp.type == firsttype,\
@@ -39,6 +37,10 @@ class VelocityFixer1DLeapFrog(VelocityFixer):
             force = 0.0
             posidx = pp.get_closest(gridhalf)
             force = field.ex[posidx] * force_func(gridhalf[posidx], pp.position)
+
+
+            def force_func(gridpos, pos):
+                return 1.0-np.abs(gridpos - pos) / grid_step
 
             # Accelerate particle
             pp.momentum -= 0.5*field.time_step*force
