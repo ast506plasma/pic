@@ -87,3 +87,5 @@ These are made by entering:
 ```
 python [driver] plot
 ```
+
+as long as the driver follows the command line input parser in `maxwell.py`.
