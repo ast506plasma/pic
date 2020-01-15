@@ -12,7 +12,6 @@ class Pusher:
 
     def __call__(self, collection, field):
         """
-        """
         Push particles in a collection given the field they are on.
         """
         pass
@@ -47,7 +46,7 @@ class Pusher1DLeapFrog(Pusher):
             force = field.get_field()[posidx] * force_func(gridhalf[posidx], pp.position)
 
             if mobile:
-                # Push particle
+                # Push particle to t_{i + 1/2}
                 pp.momentum -= 0.5*field.time_step*force
                 pp.position += field.time_step*pp.momentum
             else:
