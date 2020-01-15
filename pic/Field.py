@@ -13,6 +13,7 @@ class Field:
         self.grid = grid
         self.Ndims = self.grid.get_Ndims()
         self.time_step = time_step
+        self._interp_type = interp_type
         self._ex = np.zeros(grid.get_grid().size)
         self._FieldSolver = self._initialize_solver(FieldSolver_type)
         self._interpolator = self._initialize_interp(interp_type)
