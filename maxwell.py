@@ -93,6 +93,7 @@ def plots():
 		except:
 			pass
 
+# Command line parser
 if __name__ == "__main__":
 	argnum = len(sys.argv)
 	if argnum == 1:
