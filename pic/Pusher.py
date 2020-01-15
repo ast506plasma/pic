@@ -34,7 +34,9 @@ class Pusher1DLeapFrog(Pusher):
 
             force = 0.0
             posidx = pp.get_closest(gridhalf)
-            force = field.ex[posidx] * force_func(gridhalf[posidx], pp.position)
+            # force = field.ex[posidx] * force_func(gridhalf[posidx], pp.position)
+            def force_func(gridpos, pos):
+                return 1.0 - np.abs(gridpos - pos) / grid_step
 
             if pp.type == 'mobile':
                 # Push particle
