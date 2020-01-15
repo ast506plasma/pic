@@ -25,11 +25,7 @@ class Interpolator1DLinear(Interpolator1D):
 			return self._interp(position)
 
 	def _get_interp(self, field):
-		if field.grid.get_if_shifted():
-			grid = field.grid.get_grid_shifted()
-		else:
-			grid = field.grid.get_grid()
-
+		grid = field.grid.get_grid()
 		ex = field.get_field()
 		self._grid_start = grid[0]
 		self._grid_end = grid[-1]
