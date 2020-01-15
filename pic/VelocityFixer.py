@@ -14,7 +14,8 @@ class VelocityFixer:
         pass
 
 class VelocityFixer1DLeapFrog(VelocityFixer):
-    """Accelerate the mobile particles in a collection.
+    """
+    Accelerate the mobile particles in a collection.
     """
     def __init__(self):
         self.type = "1DLeapFrog"
@@ -41,7 +42,7 @@ class VelocityFixer1DLeapFrog(VelocityFixer):
             posidx = pp.get_closest(gridhalf)
             force = field.get_field()[posidx] * force_func(gridhalf[posidx], pp.position)
 
-            # Accelerate particle
+            # Accelerate particle to t_{i+1}
             pp.momentum -= 0.5*field.time_step*force
 
         return
