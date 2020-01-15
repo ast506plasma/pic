@@ -32,7 +32,7 @@ To obtain documentation, run in the command line:
 cd docs/
 doxygen
 ```
-This will produce an [HTML](docs/html/index.html) and a [LaTeX](docs/latex/refman.tex).
+This will produce an HTML (docs/html/index.html) and a LaTeX (docs/latex/refman.tex).
 The latter can be made into a PDF if **LaTeX** is installed.
 Enter in the command line:
 ```
