@@ -21,6 +21,10 @@ class Pusher1DLeapFrog(Pusher):
         """Push particles in a collection.
         """
         firsttype = collection.particles[0].type
+        mobile = False
+        if firsttype == 'mobile':
+            mobile = True
+
         grid = field.grid.get_grid()
         gridhalf = field.grid.get_grid_shifted()
         grid_step = grid[1] - grid[0]
@@ -35,9 +39,9 @@ class Pusher1DLeapFrog(Pusher):
 
             force = 0.0
             posidx = pp.get_closest(gridhalf)
-            force = field.ex[posidx] * force_func(gridhalf[posidx], pp.position)
+            force = field.get_field()[posidx] * force_func(gridhalf[posidx], pp.position)
 
-            if pp.type == 'mobile':
+            if mobile:
                 # Push particle
                 pp.momentum -= 0.5*field.time_step*force
                 pp.position += field.time_step*pp.momentum

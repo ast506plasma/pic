@@ -14,7 +14,7 @@ TIME_STEP = 0.9
 def get_1D():
     grid = Grid1DCartesian(np.array([STEP_SIZE]), np.array([GRID_SIZE]), False)
     grid.set_grid()
-    field = Field1D("Fourier", "linear", TIME_STEP, grid)
+    field = Field1D("Fourier", "Linear", TIME_STEP, grid)
 
     return grid, field
 

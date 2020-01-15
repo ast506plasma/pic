@@ -41,9 +41,9 @@ def simulate():
 	epc, ipc = init_maxw(xmin=xmin, xmax=xmax, n0=n0, T0=T0, V0=V0, NPIC=NPIC, MMI=MMI, swidth=dx.item(0))
 
 	#creating a grid&field object
-	grid = Grid1DCartesian(dx,Nx,False)
+	grid = Grid1DCartesian(dx, Nx, True)
 	grid.set_grid()
-	field = Field1D("Fourier", "linear", dt, grid)
+	field = Field1D("Fourier", "Linear", dt, grid)
 
 	pusher, velfixer = field.get_updaters("LeapFrog")
 
@@ -82,7 +82,7 @@ def plots():
 	grid=np.loadtxt(datadir+'grid.out')
 	#getting number of timesteps in simulation
 	Nsteps=int(Tfinish/dt)
-	
+
 	for i in range(Nsteps):
 		try:
 			elex=np.loadtxt(datadir+'ele_'+str(i)+'.out',usecols=(0))
