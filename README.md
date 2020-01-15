@@ -7,4 +7,10 @@ To run the code, type "python3 maxwell.py"
 
 To generate plots for the particular run, type "python3 maxwell.py plot"
 
-Raw output data is saved in ./maxwell\_out/
+Raw output data and figures are saved in ./maxwell\_out/
+
+Simulation configure file with parameters is named as "conf\_maxwell.py"
+
+All source code may be found in "pic" folder, all tests are in "pic/tests"
+
+Doxygen file is stored in "docs" folder
